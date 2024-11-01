@@ -1,0 +1,6 @@
+== Known Issues ==
+- When a redirect is matched on update/add and points to a tax term, the reference is not added to be rescanned
+- If a redirection is added to redirect an existing page to another page, what happens?
+- The featured image on homepage shows 404 (bc image isn't local), but the link to the image is the attachment page which is 301 to the image file. How should we present this? /wp-admin/tools.php?page=where-used&tab=references&from=54421&from_location=1
+- Block types do not display the associated name labels. We need to grab block types from editor and store in options. (on start scan) If we run across a block that we do not have a label for, we set a flag to update the list of blocks in gutenberg again and update the options table with the new list. Delete the autodraft afterwards.
+- Notifications are out of sync temporarily after settings are saved. The next page load corrects the issue. The notifications need to be loaded as an AJAX request on document ready.

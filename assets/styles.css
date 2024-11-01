@@ -1,0 +1,134 @@
+/* WhereUsed specific styles */
+
+.column-to ul li,
+.column-from ul li,
+.column-redirection ul li {
+    list-style: none;
+}
+
+td.column-redirection {
+    position: relative;
+    padding: 8px 10px 8px 35px;
+}
+
+.column-redirection .redirection-rule {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.column-redirection .redirection-rule .dashicons-redo {
+    position: absolute;
+    bottom: -16px;
+    left: -17px;
+    font-size: 18px;
+}
+
+.column-redirection .redirection-to .direction.dashicons:before {
+    display: block;
+    position: absolute;
+    top: calc((100% - 21px) / 2);
+    left: -11px;
+    width: 21px;
+    height: 21px;
+    background: #fff;
+    border-radius: 21px;
+    border: 1px #ccc solid;
+    padding: 0px;
+    line-height: 21px;
+}
+
+.column-redirection .redirection-to .direction.dashicons-arrow-right-alt:before {
+    background: steelblue;
+    border: 1px #fff solid;
+    color: #fff;
+}
+
+.column-to ul li.post-title,
+.column-from ul li.post-title {
+    font-size: 15px;
+}
+
+.column-to .status {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 10px 6px;
+    font-weight: bold;
+    border-radius: 3px;
+    width: 26px;
+    text-align: center;
+    float: left;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.column-to .status .code {
+    position: relative;
+}
+
+.column-to .status::after {
+    display: none !important;
+}
+
+.column-to .status .dashicons::before {
+    position: absolute;
+    top: 5px;
+    left: -3px;
+    font-size: 55px;
+}
+
+.column-to .status.code-0xx {
+    color: black;
+}
+
+.column-to .status.code-0xx .dashicons {
+    color: darkred;
+}
+
+.column-to .status.code-1xx {
+    color: white;
+}
+
+.column-to .status.code-1xx .dashicons {
+    color: gray;
+}
+
+.column-to .status.code-2xx {
+    color: white;
+}
+
+.column-to .status.code-2xx .dashicons {
+    color: darkgreen;
+}
+
+.column-to .status.code-3xx {
+    color: black;
+}
+
+.column-to .status.code-3xx .dashicons {
+    color: steelblue;
+}
+
+.column-to .status.code-4xx {
+    color: white;
+}
+
+.column-to .status.code-4xx .dashicons {
+    color: orangered;
+}
+
+.column-to .status.code-5xx {
+    color: yellow;
+}
+
+.column-to .status.code-5xx .dashicons {
+    color: rgb(255, 0, 0);
+}
+
+.column-to .status:hover {
+    color: #000;
+}
+
+.column-to .status:hover .dashicons {
+    color: gray;
+}

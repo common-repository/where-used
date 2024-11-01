@@ -1,0 +1,136 @@
+Install Helpers Library as a dependency of your custom WordPress plugin.
+
+WARNING: This plugin relies on your plugin having a PHP namespace throughout all your PHP files including your main plugin file. This ensures that the library will be installed as a sub namespace. If you do not install this library properly, you will run into conflicts with other plugins using this dependency as well.
+
+1. Download the latest version of Helpers Library from https://gitlab.com/sovdeveloping/helpers-library
+2. Place the unzipped files in /wp-content/plugins/your-plugin/library/helpers-library
+3. Add the PHP install code below into your main file in your plugin /wp-content/plugins/your-plugin-slug/your-plugin.php.
+4. Replace "YourPlugin" with the name of your plugin, which is used as a namespace. Replace "YOURPLUGIN" with the name of your plugin in all caps as this is used for naming of PHP constants. Replace "your-plugin-slug" with the slug or name of the directory where all your plugins logic is. Replace "/load-your-plugin.php" with the path to the file where your plugin's logic starts (not the main file).
+5. Now your plugin has PHP and WordPress compatibility checking installed. If the compatibility looks good, then it will installed the Helpers Library (if needed) and load it, then load your plugins functionality.
+
+When your installs the Helpers Library will automatically run install.php, it will copy the /library/helpers-library/ to /library/_helpers-library/ and automatically prepend all the namespaces with your custom namespace to prevent conflicts with other plugins.
+
+6. The /library/_helpers-library/ directory is the files your plugin runs and the /library/helpers-library/ directory can be deleted once everything is running properly.
+
+<?php
+
+namespace YourPlugin;
+
+// Prevent Direct Access
+( defined( 'ABSPATH' ) ) || die;
+
+define( 'YOURPLUGIN_NAME', 'Your Plugin Name' );
+define( 'YOURPLUGIN_SLUG', 'your-plugin-slug' );
+define( 'YOURPLUGIN_VERSION', '1.0.0' );
+define( 'YOURPLUGIN_MIN_PHP', '7.4.0' );
+define( 'YOURPLUGIN_MIN_WP', '5.3.0' );
+
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+
+	if ( check_compatibility() ) {
+
+		require_once( __DIR__ . '/load-your-plugin.php' );
+
+	} else {
+		if ( defined( 'YOURPLUGIN_COMPATIBLE_ERROR' ) ) {
+
+			if ( ( is_admin() || is_network_admin() ) && ! wp_doing_ajax() && ! wp_doing_cron() ) {
+				// Display plugin compatibility error notice
+				add_action( 'admin_notices', __NAMESPACE__ . '\\display_compatibility_notice' );
+				add_action( 'network_admin_notices', __NAMESPACE__ . '\\display_compatibility_notice' );
+			}
+		}
+	}
+}
+
+/**
+ * Check to see if the current WordPress install is compatible with our plugin
+ *
+ * @package YourPlugin
+ * @since   1.0.0
+ *
+ * @global string $wp_version The WordPress version string.
+ * @return bool
+ *
+ * @note DO NOT ADD TYPE HINTING TO THIS MAIN FILE OR FUNCTION: The function must be backwards compatible with old versions of PHP 5.6
+ */
+function check_compatibility() {
+
+	global $wp_version;
+
+	if ( ! defined( 'YOURPLUGIN_COMPATIBLE_ERROR' ) ) {
+		if ( version_compare( PHP_VERSION, YOURPLUGIN_MIN_PHP, '<' ) ) {
+			// PHP version is less than minimum required
+			$message = sprintf( __( 'Error: %s - Plugin requires PHP version %s or higher. You are currently running %s.', YOURPLUGIN_SLUG ), YOURPLUGIN_NAME, YOURPLUGIN_MIN_PHP, PHP_VERSION );
+			define( 'YOURPLUGIN_COMPATIBLE_ERROR', $message );
+		} elseif ( version_compare( $wp_version, YOURPLUGIN_MIN_WP, '<' ) ) {
+			// WP version is less than minimum required
+			$message = sprintf( __( 'Error: %s - Plugin requires WordPress version %s or higher. You are currently running version %s.', YOURPLUGIN_SLUG ), YOURPLUGIN_NAME, YOURPLUGIN_MIN_WP, $wp_version );
+			define( 'YOURPLUGIN_COMPATIBLE_ERROR', $message );
+		} else {
+
+			// System is compatible with this plugin up to this point
+            
+            if ( ! defined('WP_UNINSTALL_PLUGIN') || WP_UNINSTALL_PLUGIN == YOURPLUGIN_SLUG . '.php' ){
+
+                $helpers_library_file = __DIR__ . '/library/_helpers-library/helpers-library.php';
+
+                if ( file_exists( $helpers_library_file ) ) {
+                    // Load Helper's Library
+                    include_once( $helpers_library_file );
+                } else {
+
+                    $helpers_library_source_file = __DIR__ . '/library/helpers-library/helpers-library.php';
+
+                    if ( file_exists( $helpers_library_source_file ) ) {
+                        $get_args = [
+                            'blocking' => true,
+                            'timeout' => 15,
+                            'redirection' => 0,
+                            'user-agent' => __NAMESPACE__ . ' - ' . get_bloginfo( 'url' ),
+                            'cookies' => $_COOKIE,
+                            'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
+                            'body' => [ 'namespace' => __NAMESPACE__, 'plugin_dir' => __DIR__ ],
+                        ];
+                        $response = wp_remote_post( plugin_dir_url( __FILE__ ) . '/library/helpers-library/install.php', $get_args );
+
+                        if ( file_exists( $helpers_library_file ) ) {
+                            // Load Helper's Library
+                            include_once( $helpers_library_file );
+                        } else {
+                            define( 'YOURPLUGIN_HELPERSLIBRARY_CONFLICT', YOURPLUGIN_NAME . ': Helpers Library not loaded (1)' );
+                        }
+                    } else {
+                        define( 'YOURPLUGIN_HELPERSLIBRARY_CONFLICT', YOURPLUGIN_NAME . ': Helpers Library missing. Please reinstall the ' . YOURPLUGIN_NAME . ' plugin.' );
+                    }
+                }
+
+            } else {
+                define('YOURPLUGIN_HELPERSLIBRARY_CONFLICT', YOURPLUGIN_NAME . ': Helpers Library not loaded (2)');
+            }
+
+            if ( defined( 'YOURPLUGIN_HELPERSLIBRARY_CONFLICT' ) ) {
+                // Another plugin already loaded this library and there's a conflicting version
+                define( 'YOURPLUGIN_COMPATIBLE_ERROR', YOURPLUGIN_HELPERSLIBRARY_CONFLICT );
+            }
+
+		}
+	}
+
+	return ! defined( 'YOURPLUGIN_COMPATIBLE_ERROR' );
+
+}
+
+/**
+ * Displays the plugin compatibility error in the admin and network admin areas
+ *
+ * @package YourPlugin
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function display_compatibility_notice() {
+
+	echo '<div class="active notice notice-error plugin-' . esc_attr( YOURPLUGIN_SLUG ) . '"><p>' . esc_html( YOURPLUGIN_COMPATIBLE_ERROR ) . '</p></div>';
+
+}

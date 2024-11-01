@@ -1,0 +1,855 @@
+.ada-hidden {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    text-indent: 10px;
+    display: inline-block;
+}
+
+.flip-v {
+    transform: scale(1, -1);
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
+
+.flip-h {
+    transform: scale(-1, 1);
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.dashicons.spin {
+    animation: dashicons-spin 2s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes dashicons-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#scan-button {
+    height: 88px;
+    width: 88px;
+    border-radius: 50%;
+    margin: 0 auto;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#scan-button.scan-needed {
+    height: 144px;
+    width: 144px;
+    text-decoration: none;
+    display: block;
+}
+
+#scan-button.initial {
+    display: block;
+    text-decoration: none;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+17,52b152+33,008a00+67,005700+83,002400+100;Green+3D+%231 */
+    background: rgb(180, 221, 180); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4ddb4', endColorstr='#002400', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+#scan-button.new {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cedce7+0,596a72+100;Grey+3D+%231 */
+    background: rgb(206, 220, 231); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(206, 220, 231, 1) 0%, rgba(89, 106, 114, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(206, 220, 231, 1) 0%, rgba(89, 106, 114, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(206, 220, 231, 1) 0%, rgba(89, 106, 114, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cedce7', endColorstr='#596a72', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+#scan-button.scan-needed.new {
+    display: block;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
+    background: rgb(169, 3, 41); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a90329', endColorstr='#6d0019', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+#scan-button .inner-button {
+    display: block;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
+    background: rgb(255, 255, 255); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 50%, rgba(237, 237, 237, 1) 51%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 50%, rgba(237, 237, 237, 1) 51%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 50%, rgba(237, 237, 237, 1) 51%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+    font-size: 14px;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    padding-top: calc((100% - 70px) / 2);
+}
+
+#scan-button.scan-needed .inner-button {
+    font-size: 17px;
+    color: #333;
+}
+
+#scan-button .inner-button .start {
+    font-size: 24px;
+    display: block;
+    color: #666;
+}
+
+#scan-button.scan-needed .inner-button .start {
+    font-size: 34px;
+}
+
+#scan-button.initial .inner-button .start {
+    color: green;
+}
+
+#scan-button.scan-needed.new .inner-button .start {
+    color: darkred;
+}
+
+table.widefat th.sortable, table.widefat th.sorted {
+    padding: 8px 10px;
+}
+
+table th.sortable a,
+table th.sorted a {
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 3px;
+}
+
+ul.content-rows {
+    margin-bottom: 0;
+}
+
+ul.content-rows .dashicons {
+    font-size: 18px;
+}
+
+.tools-page-custom #wpcontent {
+    padding-left: 0;
+}
+
+.privacy-settings-header span:before {
+    font-family: 'dashicons';
+    display: inline-block;
+    font-size: 22px;
+    margin: 0;
+    position: relative;
+    top: -1px;
+    right: 3px;
+}
+
+.tools-page-custom .privacy-settings-header #screen-meta-links {
+    position: relative;
+    top: 1px;
+}
+
+.tools-page-custom #screen-meta-links #show-network-settings-link::after {
+    content: "\f139";
+}
+
+.privacy-settings-header .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Notifications */
+
+.privacy-settings-header .notifications-bell {
+    position: absolute;
+    top: 18px;
+    right: 40px;
+    font-size: 25px;
+    color: #ccc;
+}
+
+.privacy-settings-header .notifications-bell:focus {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.privacy-settings-header .notifications-bell .bell-inner {
+    position: relative;
+}
+
+.privacy-settings-header .notifications-bell .count {
+    display: none;
+}
+
+.privacy-settings-header .notifications-bell.on {
+    color: #3582c4;
+}
+
+.privacy-settings-header .notifications-bell.on .count {
+    display: block;
+    background: red;
+    color: white;
+    padding: 2px;
+    top: -23px;
+    right: -30px;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-family: sans-serif;
+    position: absolute;
+}
+
+.privacy-settings-header .notifications {
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    width: 460px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    margin: 0;
+    display: none;
+    box-shadow: 5px 5px 18px rgb(0 0 0 / 25%);
+    max-height: 500px;
+    z-index: 999;
+    overflow-y: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.privacy-settings-header .notifications.on {
+    display: block;
+}
+
+.privacy-settings-header .notifications li {
+    background: #f4f4f4;
+    padding: 13px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    margin: 0;
+    position: relative;
+}
+
+.privacy-settings-header .notifications li:first-of-type {
+    background: #fff;
+    font-weight: bold;
+    color: #333;
+}
+
+.privacy-settings-header .notifications li h3 {
+    display: inline-block;
+    margin: 0;
+}
+
+.privacy-settings-header .notifications li .mark-all-read {
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+}
+
+.privacy-settings-header .notifications li p {
+    margin: 0 0 5px 0;
+    width: calc(100% - 25px);
+}
+
+.privacy-settings-header .notifications li input[type=checkbox] {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.privacy-settings-header .notifications li:hover {
+    background: white;
+}
+
+.privacy-settings-header .notifications li.notice {
+    border-left: 5px solid #2271b1;
+}
+
+.privacy-settings-header .notifications li.success {
+    border-left: 5px solid #00a32a;
+}
+
+.privacy-settings-header .notifications li.warning {
+    border-left: 5px solid #dba617;
+}
+
+.privacy-settings-header .notifications li.error {
+    border-left: 5px solid #d63638;
+}
+
+.privacy-settings-header .notifications li.unread {
+    background: lightgoldenrodyellow;
+}
+
+.privacy-settings-header .notifications li:hover {
+    background: #fff;
+}
+
+.privacy-settings-header .notifications li .date {
+    font-size: 12px;
+    text-align: right;
+    color: #666;
+}
+
+.privacy-settings-tabs-wrapper {
+    display: block;
+}
+
+.privacy-settings-tab {
+    font-size: 17px;
+    display: inline-block;
+    width: 170px;
+}
+
+.privacy-settings-tab:hover {
+    box-shadow: inset 0 -3px #999;
+    font-weight: 600;
+}
+
+.tools-page-custom .content-body {
+    padding: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.content-body .loading-text {
+    font-size: 21px;
+    text-align: center;
+    display: block;
+    margin: 55px auto;
+    color: #ccc;
+}
+
+.content-body table .loading-text {
+    margin: 0;
+    font-size: 16px;
+}
+
+.tools-page-custom .content-body .loading-text span {
+    font-size: 55px;
+    display: block;
+    padding: 21px;
+}
+
+.tools-page-custom .content-body .column-size .loading-text {
+    font-size: 14px;
+    margin: 5px auto;
+}
+
+.tools-page-custom .content-body .column-size .loading-text span {
+    padding: 10px;
+}
+
+.tools-page-custom .content-body .column-size .loading-text span:before {
+    font-size: 21px;
+    padding: 0;
+}
+
+.tools-page-custom .content-body h1 {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 21px;
+    width: 90%;
+    margin: 0 auto 21px;
+    max-width: 850px;
+    color: #3582c4;
+    letter-spacing: 0.015em;
+}
+
+.tools-page-custom .content-body .nav-tab-wrapper h1 {
+    width: auto;
+    margin: auto;
+    padding: 0;
+    max-width: 100%;
+    border-bottom: 0;
+}
+
+.tools-page-custom .content-body .nav-tab-wrapper .button-cleanup-cache {
+    float: right;
+    margin: 0 10px;
+}
+
+.tools-page-custom .content-body .current-site {
+    font-size: 18px;
+    line-height: 1em;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.tools-page-custom .content-body .select-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 3px;
+    background: white;
+}
+
+.tools-page-custom .content-body .select-wrapper.active,
+.tools-page-custom .content-body input.active {
+    background: #daf6ff;
+}
+
+.tools-page-custom .content-body .select-wrapper .dashicons {
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    width: 15px;
+}
+
+.tools-page-custom .content-body .select-wrapper select {
+    padding: 0px 5px 0 30px;
+    background: transparent;
+}
+
+.tools-page-custom .content-body .additional-filters .select-wrapper,
+.tools-page-custom .content-body .additional-filters .button,
+.tools-page-custom .content-body .additional-filters .reset-filters {
+    margin: 5px;
+}
+
+.tools-page-custom .content-body .additional-filters select {
+    margin-right: 0;
+}
+
+.tools-page-custom .content-body table {
+    margin: 0 auto;
+    max-width: 850px;
+    width: 100%;
+}
+
+.tools-page-custom .content-body table#access-options {
+    max-width: 400px;
+}
+
+.tools-page-custom .content-body table.wp-list-table {
+    max-width: 100%;
+}
+
+.tools-page-custom .content-body table.settings-site td,
+.tools-page-custom .content-body table.settings-network td {
+    padding: 13px;
+}
+
+.tools-page-custom .content-body table th,
+.tools-page-custom .content-body table td {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.tools-page-custom table tr.heading th {
+    font-weight: bold;
+    background: #f0f0f0;
+    text-align: center;
+}
+
+.tools-page-custom table.table-view-list tr th {
+    position: sticky;
+    top: 32px;
+    background: white;
+    z-index: 1;
+}
+
+.tools-page-custom .content-body table td.label {
+    text-align: right;
+    width: 45%;
+    vertical-align: top;
+    max-width: 200px;
+}
+
+.tools-page-custom .content-body table td.label label {
+    font-weight: bold;
+}
+
+.tools-page-custom .content-body table td .info {
+    font-size: 13px;
+}
+
+.tools-page-custom .content-body table.settings textarea.code {
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+}
+
+.tools-page-custom .content-body table.wp-list-table tr {
+    transition: 0.5s background-color;
+}
+
+.tools-page-custom .content-body table.wp-list-table tr:hover {
+    background: #eee;
+}
+
+.tools-page-custom .content-body table.wp-list-table tr.updated {
+    background: rgb(60 179 113 / 30%);
+}
+
+.tools-page-custom .content-body table.wp-list-table tr.failed,
+.tools-page-custom .content-body table.wp-list-table tr.error {
+    background: rgb(205 92 92 / 30%);
+}
+
+.tools-page-custom .content-body table.wp-list-table tr.issue {
+    background: rgb(255 165 0 / 30%);
+}
+
+.tools-page-custom .content-body table.wp-list-table td input[type=text] {
+    width: 100%;
+}
+
+table.table-view-list tr th {
+    position: sticky;
+    top: 32px;
+    background: white;
+    z-index: 1;
+}
+
+.block-editor-page table.table-view-list tr th {
+    top: 0;
+}
+
+table.table-view-list tr th,
+table.table-view-list tr td {
+    border-right: solid 1px #dedede;
+}
+
+table.table-view-list tr th:last-of-type,
+table.table-view-list tr td:last-of-type {
+    border-right: 0;
+}
+
+.tools-page-custom .content-body p.submit {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 18px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1;
+}
+
+@media all and ( min-width: 783px ) {
+    .tools-page-custom .content-body p.submit {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+
+    .tools-page-custom.folded .content-body p.submit {
+        width: calc(100% - 36px);
+        left: 36px;
+    }
+}
+
+@media all and ( min-width: 783px ) and ( max-width: 960px ) {
+    .tools-page-custom.auto-fold .content-body p.submit {
+        width: calc(100% - 36px);
+        left: 36px;
+    }
+}
+
+@media all and ( max-width: 782px ) {
+    .tools-page-custom .wp-responsive-open .content-body p.submit {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+}
+
+.tools-page-custom .content-body table .required {
+    text-align: right;
+    color: red;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+
+.tools-page-custom .content-body table .highlight {
+    background: yellow;
+    display: inline-block;
+}
+
+.tools-page-custom .content-body p {
+    font-size: 1em;
+}
+
+.tools-page-custom .content-body footer {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.wp-core-ui .notice {
+    max-width: 700px;
+    margin: 10px auto;
+    box-sizing: border-box;
+}
+
+.tools-page-custom .content-body .item-row {
+    margin-bottom: 10px;
+}
+
+.content-body .dashicons, .content-body .dashicons-before:before {
+    font-size: 1.3em;
+    width: auto;
+    height: auto;
+    line-height: inherit;
+}
+
+.tools-page-custom .content-body .wrap {
+    margin: 0;
+}
+
+.tools-page-custom .content-body .custom-block input[type=text] {
+    width: 200px;
+}
+
+.tools-page-custom .content-body .custom-block .remove {
+    margin-left: 5px;
+}
+
+.tools-page-custom .content-body .custom-block .remove span {
+    width: 1px;
+    height: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.tools-page-custom .content-body .custom-block .remove:before {
+    content: 'X';
+}
+
+/* Dashboard */
+.tools-page-custom .postbox-container {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.tools-page-custom #dashboard-widgets .meta-box-sortables {
+    margin: 10px;
+}
+
+.tools-page-custom #dashboard-widgets #postbox-container-1,
+.tools-page-custom #dashboard-widgets #postbox-container-2 {
+    width: calc((100% - 10px) / 2) !important;
+}
+
+.tools-page-custom #dashboard-widgets #postbox-container-1 {
+    margin-right: 10px;
+}
+
+.tools-page-custom #dashboard-widgets #settings ul {
+    list-style: disc;
+    padding-left: 21px;
+}
+
+.tools-page-custom #dashboard-widgets .inside {
+    overflow: hidden;
+}
+
+.tools-page-custom #dashboard-widgets .inside h2 {
+    font-size: 18px;
+}
+
+.tools-page-custom #dashboard-widgets .inside h3 {
+    font-size: 15px;
+}
+
+.tools-page-custom #dashboard-widgets .inside .padded-left {
+    padding-left: 25px;
+}
+
+.tools-page-custom #dashboard-widgets #find_url_references .search-box {
+    float: none;
+}
+
+.tools-page-custom #dashboard-widgets #find_url_references .search-box input[type=search] {
+    width: calc(100% - 125px);
+}
+
+.notice-text {
+    font-weight: bold;
+    color: #2271b1;
+}
+
+.success-text {
+    font-weight: bold;
+    color: #00a32a;
+}
+
+.warning-text {
+    font-weight: bold;
+    color: #dba617;
+}
+
+.error-text {
+    font-weight: bold;
+    color: #d63638;
+}
+
+.tools-page-custom #screen-meta-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Progress bar */
+.tools-page-custom #dashboard-widgets #progress-bar {
+    background: #999;
+    padding: 13px;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.tools-page-custom #dashboard-widgets #progress-bar .current-progress {
+    background: green;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    left: 0;
+    top: 0;
+    transition: width 4s;
+}
+
+.tools-page-custom #dashboard-widgets #progress-bar .dashicons.spin {
+    position: absolute;
+    right: -43px;
+    top: -33px;
+    color: #fff;
+    font-size: 105px;
+    opacity: .5;
+}
+
+.tools-page-custom #dashboard-widgets #progress-bar .text {
+    position: relative;
+    color: white;
+    font-weight: bold;
+}
+
+.tools-page-custom #dashboard-widgets #progress-bar .text .percent {
+    color: yellow;
+}
+
+/* Charts */
+
+.doughnut-chart {
+    position: relative;
+    max-width: 320px;
+    margin: auto;
+}
+
+.doughnut-chart .center-label {
+    position: absolute;
+    width: 130px;
+    height: 85px;
+    color: #333;
+    top: calc((100% - 85px) / 2);
+    left: calc((100% - 130px) / 2);
+    text-align: center;
+    font-size: 21px;
+    line-height: 1.4em;
+}
+
+.doughnut-chart .center-label span {
+    display: block;
+    font-size: 34px;
+    font-weight: bold;
+    color: red;
+}
+
+.chart-legend .color-box {
+    display: inline-block;
+    width: auto;
+    height: 21px;
+    padding: 5px 8px;
+    margin-right: 10px;
+    line-height: 21px;
+    color: white;
+}
+
+.chart-legend a.color-box-link {
+    color: #333;
+    font-size: 14px;
+    transition: background .25s, border-color .25s;
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0);
+}
+
+.chart-legend a.color-box-link:hover {
+    background: #f4f4f4;
+    border-color: #ccc;
+}
+
+.row-actions:focus-within {
+    position: static;
+}
+
+.chart-legend > li {
+    margin: 0 0 21px;
+}
+
+.chart-legend a span {
+    font-weight: bold;
+    color: #000;
+}
+
+.plugins .plugin-title .dashicons:before {
+    font-size: 20px;
+}
+
+[class*=dashicons-star-] {
+    color: #ffb900;
+}
+
+.all-tab-content .tab-content {
+    display: block;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.all-tab-content .tab-content.active {
+    height: auto;
+    opacity: 1;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
